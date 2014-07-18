@@ -73,7 +73,7 @@ end
 post '/lti_tool' do
   launch_url = params[:launch_presentation_return_url]
   if launch_url 
-    return "launch url"
+    return launch_url
   else
     puts launch_url
     return haml :index
