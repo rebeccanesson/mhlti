@@ -50,6 +50,11 @@ def authorize!
   return true
 end
 
+def was_nonce_used_in_last_x_minutes?(nonce, minutes=60)
+  # some kind of caching solution or something to keep a short-term memory of used nonces
+  false
+end
+
 # The url for launching the tool
 # It will verify the OAuth signature
 post '/lti_tool' do
