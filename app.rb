@@ -1,6 +1,7 @@
 # app.rb
 
 require 'builder'
+require 'logger'
 
 set :haml, :format => :html5
 
@@ -70,8 +71,13 @@ end
 # The url for launching the tool
 # It will verify the OAuth signature
 post '/lti_tool' do
-
-  return haml :index
+  launch_url = params[:launch_presentation_return_url]
+  if launch_url 
+    return "launch url"
+  else
+    puts "param: #{launch_url}"
+    return haml :index
+  end
 
   # return haml :unauthorized unless authorize!
   #
