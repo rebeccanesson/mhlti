@@ -71,8 +71,7 @@ end
 # The url for launching the tool
 # It will verify the OAuth signature
 post '/lti_tool' do
-  launch_url = params[:launch_presentation_return_url]
-  return haml :index, :locals => {:launch_url => launch_url}
+  return haml :index, :locals => {:launch_url => params[:launch_presentation_return_url]}
 
   # return haml :unauthorized unless authorize!
   #
