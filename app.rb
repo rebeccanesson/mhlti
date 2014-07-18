@@ -16,8 +16,6 @@ def show_error(message)
 end
 
 def authorize!
-  @tp = IMS::LTI::ToolProvider.new('key', 'secret', params)
-  return true
 
   if key = params['oauth_consumer_key']
     if secret = $oauth_creds[key]
@@ -68,21 +66,22 @@ end
 # The url for launching the tool
 # It will verify the OAuth signature
 post '/lti_tool' do
-  haml :index
-  
-  return haml :unauthorized unless authorize!
 
-  if @tp.outcome_service?
-    # It's a launch for grading
-    return haml :index
-  else
-    # normal tool launch without grade write-back
-    signature = OAuth::Signature.build(request, :consumer_secret => @tp.consumer_secret)
+  return haml :index
 
-    @signature_base_string = signature.signature_base_string
-    @secret = signature.send(:secret)
-
-    @tp.lti_msg = "Sorry that tool was so boring"
-    return haml :index
-  end
+  # return haml :unauthorized unless authorize!
+  #
+  # if @tp.outcome_service?
+  #   # It's a launch for grading
+  #   return haml :index
+  # else
+  #   # normal tool launch without grade write-back
+  #   signature = OAuth::Signature.build(request, :consumer_secret => @tp.consumer_secret)
+  #
+  #   @signature_base_string = signature.signature_base_string
+  #   @secret = signature.send(:secret)
+  #
+  #   @tp.lti_msg = "Sorry that tool was so boring"
+  #   return haml :index
+  # end
 end
