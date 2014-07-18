@@ -75,7 +75,7 @@ post '/lti_tool' do
   if launch_url 
     return "launch url"
   else
-    puts "param: #{launch_url}"
+    puts launch_url
     return haml :index
   end
 
