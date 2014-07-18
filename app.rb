@@ -59,6 +59,10 @@ def was_nonce_used_in_last_x_minutes?(nonce, minutes=60)
   false
 end
 
+def get_video_list
+
+end
+
 get '/tool_config' do
   erb :tool_config
 end
@@ -67,7 +71,7 @@ end
 # It will verify the OAuth signature
 post '/lti_tool' do
 
-  return haml :index
+  return erb :matterhornlist
 
   # return haml :unauthorized unless authorize!
   #
