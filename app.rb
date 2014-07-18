@@ -16,6 +16,7 @@ def show_error(message)
 end
 
 def authorize!
+  @tp = IMS::LTI::ToolProvider.new('key', 'secret', params)
   return true
   if key = params['oauth_consumer_key']
     if secret = $oauth_creds[key]
