@@ -62,7 +62,7 @@ post '/lti_tool' do
 
   if @tp.outcome_service?
     # It's a launch for grading
-    haml :error
+    haml :index
   else
     # normal tool launch without grade write-back
     signature = OAuth::Signature.build(request, :consumer_secret => @tp.consumer_secret)
