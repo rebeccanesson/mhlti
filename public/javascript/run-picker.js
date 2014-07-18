@@ -5,7 +5,8 @@ $(document).ready(
 	    show_label:   true,
 	}).change(function(evt){
             var url = jQuery(evt.target).find("option:selected").data("video-url"); 
-            window.location = jQuery("#launch_url").html() + '?' + 'return_type=url&url=' + encodeURIComponent(url);
+            var title = jQuery(evt.target).find("option:selected").data("img-label"); 
+            window.location = jQuery("#launch_url").html() + '?' + 'return_type=url&url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(title);
 	});
 		
   });
