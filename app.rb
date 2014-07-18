@@ -18,6 +18,7 @@ end
 def authorize!
   @tp = IMS::LTI::ToolProvider.new('key', 'secret', params)
   return true
+
   if key = params['oauth_consumer_key']
     if secret = $oauth_creds[key]
       @tp = IMS::LTI::ToolProvider.new(key, secret, params)
@@ -71,7 +72,7 @@ post '/lti_tool' do
 
   if @tp.outcome_service?
     # It's a launch for grading
-    haml :index
+    return haml :index
   else
     # normal tool launch without grade write-back
     signature = OAuth::Signature.build(request, :consumer_secret => @tp.consumer_secret)
@@ -80,6 +81,6 @@ post '/lti_tool' do
     @secret = signature.send(:secret)
 
     @tp.lti_msg = "Sorry that tool was so boring"
-    haml :index
+    return haml :index
   end
 end
