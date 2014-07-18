@@ -68,6 +68,8 @@ end
 # The url for launching the tool
 # It will verify the OAuth signature
 post '/lti_tool' do
+  haml :index
+  
   return haml :unauthorized unless authorize!
 
   if @tp.outcome_service?
