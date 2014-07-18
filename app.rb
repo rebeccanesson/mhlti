@@ -71,7 +71,7 @@ end
 # It will verify the OAuth signature
 post '/lti_tool' do
 
-  return erb :matterhornlist
+  return haml :index
 
   # return haml :unauthorized unless authorize!
   #
