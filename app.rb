@@ -58,7 +58,7 @@ end
 # The url for launching the tool
 # It will verify the OAuth signature
 post '/lti_tool' do
-  return haml :error unless authorize!
+  return haml :unauthorized unless authorize!
 
   if @tp.outcome_service?
     # It's a launch for grading
