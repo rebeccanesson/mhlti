@@ -53,19 +53,20 @@ end
 # The url for launching the tool
 # It will verify the OAuth signature
 post '/lti_tool' do
-  return haml :error unless authorize!
-
-  if @tp.outcome_service?
-    # It's a launch for grading
-    haml :error
-  else
-    # normal tool launch without grade write-back
-    signature = OAuth::Signature.build(request, :consumer_secret => @tp.consumer_secret)
-
-    @signature_base_string = signature.signature_base_string
-    @secret = signature.send(:secret)
-
-    @tp.lti_msg = "Sorry that tool was so boring"
-    haml :index
-  end
+  return haml :index
+  # return haml :error unless authorize!
+  #
+  # if @tp.outcome_service?
+  #   # It's a launch for grading
+  #   haml :error
+  # else
+  #   # normal tool launch without grade write-back
+  #   signature = OAuth::Signature.build(request, :consumer_secret => @tp.consumer_secret)
+  #
+  #   @signature_base_string = signature.signature_base_string
+  #   @secret = signature.send(:secret)
+  #
+  #   @tp.lti_msg = "Sorry that tool was so boring"
+  #   haml :index
+  # end
 end
