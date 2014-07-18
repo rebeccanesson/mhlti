@@ -1,8 +1,16 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    builder (3.2.2)
     haml (4.0.5)
       tilt
+    ims-lti (1.1.4)
+      builder
+      oauth (~> 0.4.5)
+      uuid
+    macaddr (1.7.1)
+      systemu (~> 2.6.2)
+    oauth (0.4.7)
     rack (1.5.2)
     rack-protection (1.5.3)
       rack
@@ -10,11 +18,15 @@ GEM
       rack (~> 1.4)
       rack-protection (~> 1.4)
       tilt (~> 1.3, >= 1.3.4)
+    systemu (2.6.4)
     tilt (1.4.1)
+    uuid (2.3.7)
+      macaddr (~> 1.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   haml
+  ims-lti
   sinatra
