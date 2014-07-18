@@ -1,4 +1,7 @@
 # app.rb
+
+require 'builder'
+
 set :haml, :format => :html5
 
 get "/" do
@@ -53,6 +56,10 @@ end
 def was_nonce_used_in_last_x_minutes?(nonce, minutes=60)
   # some kind of caching solution or something to keep a short-term memory of used nonces
   false
+end
+
+get '/tool_config' do
+  erb :tool_config
 end
 
 # The url for launching the tool

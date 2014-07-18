@@ -27,6 +27,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  builder
   haml
   ims-lti
   sinatra
